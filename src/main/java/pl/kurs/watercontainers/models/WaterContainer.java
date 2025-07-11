@@ -1,17 +1,33 @@
 package pl.kurs.watercontainers.models;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class WaterContainer {
+public class WaterContainer implements Serializable {
+
+    private static final long serialVersionUID = 42L;
 
     private String name;
     private double maxCapacity;
     private double currentWaterAmount;
 
-    public WaterContainer(String name, double maxCapacity, double currentWaterAmount) {
+    private WaterContainer(String name, double maxCapacity, double currentWaterAmount) {
         this.name = name;
         this.maxCapacity = maxCapacity;
         this.currentWaterAmount = currentWaterAmount;
+    }
+
+    public static WaterContainer create(String name, double maxCapacity, double currentWaterAmount) {
+        if (maxCapacity <= 0) {
+            throw new RuntimeException("Bad value for max capacity!");
+        }
+        if (currentWaterAmount < 0) {
+            throw new RuntimeException("Bad value for current water amount!");
+        }
+        if (currentWaterAmount > maxCapacity) {
+            throw new RuntimeException("Current water amount can't be bigger than max capacity!");
+        }
+        return new WaterContainer(name, maxCapacity, currentWaterAmount);
     }
 
     public String getName() {
