@@ -1,5 +1,7 @@
 package pl.kurs.watercontainers.models;
 
+import java.util.Objects;
+
 public class WaterContainer {
 
     private String name;
@@ -34,6 +36,19 @@ public class WaterContainer {
 
     public void setCurrentWaterAmount(double currentWaterAmount) {
         this.currentWaterAmount = currentWaterAmount;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        WaterContainer that = (WaterContainer) object;
+        return Double.compare(maxCapacity, that.maxCapacity) == 0 && Double.compare(currentWaterAmount, that.currentWaterAmount) == 0 && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, maxCapacity, currentWaterAmount);
     }
 
     @Override
