@@ -1,8 +1,11 @@
 package pl.kurs.watercontainers.models;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Objects;
 
-public class Employee {
+public class Employee implements Serializable {
+    private static final long serialVersionUID = 42L;
 
     private String firstName;
     private String lastName;
@@ -14,6 +17,42 @@ public class Employee {
         this.salary = salary;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public BigDecimal getSalary() {
+        return salary;
+    }
+
+    public void setSalary(BigDecimal salary) {
+        this.salary = salary;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(salary, employee.salary);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, salary);
+    }
 
     @Override
     public String toString() {
