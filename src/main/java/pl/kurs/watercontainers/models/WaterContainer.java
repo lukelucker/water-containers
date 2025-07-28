@@ -40,6 +40,15 @@ public class WaterContainer implements Serializable {
         }
     }
 
+    public void subtractWater(double value) {
+        if (value <= 0) {
+            System.out.println("Wartośc powinna być większa od 0!");
+        } else if (value - this.currentWaterAmount < 0) {
+            System.out.println("Za dużo wody do odlania!");
+        } else {
+            this.currentWaterAmount -= value;
+        }
+    }
 
     public String getName() {
         return name;
