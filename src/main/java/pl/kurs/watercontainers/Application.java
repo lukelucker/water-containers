@@ -12,5 +12,8 @@ public class Application {
         beczka.addWater(60);
         System.out.println(beczka);
 
+        beczka.pourWater(mauzer, 30);
+        System.out.println(beczka);
+
     }
 }
