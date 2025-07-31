@@ -10,11 +10,13 @@ public class Employee implements Serializable {
     private String firstName;
     private String lastName;
     private BigDecimal salary;
+    private int experienceInYears;
 
-    public Employee(String firstName, String lastName, BigDecimal salary) {
+    public Employee(String firstName, String lastName, BigDecimal salary, int experienceInYears) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
+        this.experienceInYears = experienceInYears;
     }
 
     public String getFirstName() {
@@ -42,16 +44,16 @@ public class Employee implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(salary, employee.salary);
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Employee employee = (Employee) object;
+        return experienceInYears == employee.experienceInYears && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(salary, employee.salary);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, salary);
+        return Objects.hash(firstName, lastName, salary, experienceInYears);
     }
 
     @Override
@@ -60,6 +62,7 @@ public class Employee implements Serializable {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", salary=" + salary +
+                ", experienceInYears=" + experienceInYears +
                 '}';
     }
 }
