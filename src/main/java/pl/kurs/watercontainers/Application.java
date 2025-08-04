@@ -15,7 +15,7 @@ public class Application {
         WaterContainer konewka = WaterContainer.create("Konewka", 20, 5);
         WaterContainer wiadro = WaterContainer.create("Wiadro", 35, 3);
 
-        List<WaterContainer> waterContainerList = List.of(beczka, mauzer, wiadro, konewka);
+        List<WaterContainer> waterContainerList = null;//List.of(beczka, mauzer, wiadro, konewka);
 
         beczka.addWater(60);
         System.out.println(beczka);
@@ -25,6 +25,9 @@ public class Application {
 
         Optional<WaterContainer> containerWithTheMostWaterValue = WaterContainerServices.findContainerWithTheMostWaterValue(waterContainerList);
         System.out.println(containerWithTheMostWaterValue);
+
+        Optional<WaterContainer> theMostFilledContainer = WaterContainerServices.findTheMostFilledContainer(waterContainerList);
+        System.out.println(theMostFilledContainer);
 
 
     }
