@@ -21,6 +21,13 @@ public class WaterContainerServices {
                 .max(Comparator.comparingDouble(WaterContainerServices::calculateFillingRatio));
     }
 
+    public static List<WaterContainer> findAllEmptyContainers(List<WaterContainer> waterContainerList) {
+        return Optional.ofNullable(waterContainerList).orElseGet(Collections::emptyList)
+                .stream()
+                .filter(WaterContainer::isEmpty)
+                .toList();
+    }
+
     private static double calculateFillingRatio(WaterContainer waterContainer) {
         return waterContainer.getCurrentWaterAmount() / waterContainer.getMaxCapacity();
     }

@@ -74,6 +74,10 @@ public class WaterContainer implements Serializable {
         return true;
     }
 
+    public boolean isEmpty() {
+        return currentWaterAmount == 0;
+    }
+
     public String getName() {
         return name;
     }
