@@ -10,9 +10,9 @@ public class Employee implements Serializable {
     private String firstName;
     private String lastName;
     private BigDecimal salary;
-    private int experienceInYears;
+    private Integer experienceInYears;
 
-    public Employee(String firstName, String lastName, BigDecimal salary, int experienceInYears) {
+    public Employee(String firstName, String lastName, BigDecimal salary, Integer experienceInYears) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
@@ -41,6 +41,14 @@ public class Employee implements Serializable {
 
     public void setSalary(BigDecimal salary) {
         this.salary = salary;
+    }
+
+    public Integer getExperienceInYears() {
+        return experienceInYears;
+    }
+
+    public void setExperienceInYears(Integer experienceInYears) {
+        this.experienceInYears = experienceInYears;
     }
 
     @Override
