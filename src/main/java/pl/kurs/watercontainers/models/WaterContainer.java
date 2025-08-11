@@ -1,10 +1,14 @@
 package pl.kurs.watercontainers.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class WaterContainer implements Serializable {
     private static final long serialVersionUID = 42L;
+
+    private final List<OperationLog> logs = new ArrayList<>();
 
     private String name;
     private double maxCapacity;
@@ -30,22 +34,31 @@ public class WaterContainer implements Serializable {
     }
 
     public void addWater(double value) {
+        OperationLog log = null;
         if (value <= 0) {
             System.out.println("Wartośc powinna być większa od 0!");
+            log = OperationLog.create(OperationLog.OperationType.ADD, this, value, false);
         } else if (value + this.currentWaterAmount > maxCapacity) {
             System.out.println("Za dużo wody do dolania!");
+            log = OperationLog.create(OperationLog.OperationType.ADD, this, value, false);
         } else {
             this.currentWaterAmount += value;
+            log = OperationLog.create(OperationLog.OperationType.ADD, this, value, true);
         }
+        logs.add(log);
     }
 
     public void subtractWater(double value) {
+        OperationLog log = null;
         if (value <= 0) {
             System.out.println("Wartośc powinna być większa od 0!");
+            log = OperationLog.create(OperationLog.OperationType.SUBTRACT, this, value, false);
         } else if (value - this.currentWaterAmount < 0) {
             System.out.println("Za dużo wody do odlania!");
+            log = OperationLog.create(OperationLog.OperationType.SUBTRACT, this, value, false);
         } else {
             this.currentWaterAmount -= value;
+            log = OperationLog.create(OperationLog.OperationType.SUBTRACT, this, value, true);
         }
     }
 
@@ -100,6 +113,10 @@ public class WaterContainer implements Serializable {
 
     public void setCurrentWaterAmount(double currentWaterAmount) {
         this.currentWaterAmount = currentWaterAmount;
+    }
+
+    public List<OperationLog> getLogs() {
+        return logs;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package pl.kurs.watercontainers;
 
+import pl.kurs.watercontainers.models.OperationLog;
 import pl.kurs.watercontainers.models.WaterContainer;
 import pl.kurs.watercontainers.services.WaterContainerServices;
 
@@ -20,6 +21,9 @@ public class Application {
         beczka.addWater(60);
         System.out.println(beczka);
 
+        beczka.addWater(-30);
+        beczka.addWater(70);
+
         beczka.pourWater(mauzer, 30);
         System.out.println(beczka);
 
@@ -28,6 +32,10 @@ public class Application {
 
         Optional<WaterContainer> theMostFilledContainer = WaterContainerServices.findTheMostFilledContainer(waterContainerList);
         System.out.println(theMostFilledContainer);
+
+
+
+
 
 
     }
