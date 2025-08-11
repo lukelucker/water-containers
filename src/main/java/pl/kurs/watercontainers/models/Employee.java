@@ -11,12 +11,15 @@ public class Employee implements Serializable {
     private String lastName;
     private BigDecimal salary;
     private Integer experienceInYears;
+    private Integer bornYear;
 
-    public Employee(String firstName, String lastName, BigDecimal salary, Integer experienceInYears) {
+
+    public Employee(String firstName, String lastName, BigDecimal salary, Integer experienceInYears, Integer bornYear) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
         this.experienceInYears = experienceInYears;
+        this.bornYear = bornYear;
     }
 
     public String getFirstName() {
@@ -51,17 +54,27 @@ public class Employee implements Serializable {
         this.experienceInYears = experienceInYears;
     }
 
+    public Integer getBornYear() {
+        return bornYear;
+    }
+
+    public void setBornYear(Integer bornYear) {
+        this.bornYear = bornYear;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         Employee employee = (Employee) object;
-        return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(salary, employee.salary) && Objects.equals(experienceInYears, employee.experienceInYears);
+        return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName)
+                && Objects.equals(salary, employee.salary) && Objects.equals(experienceInYears, employee.experienceInYears)
+                && Objects.equals(bornYear, employee.bornYear);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, salary, experienceInYears);
+        return Objects.hash(firstName, lastName, salary, experienceInYears, bornYear);
     }
 
     @Override
@@ -71,6 +84,7 @@ public class Employee implements Serializable {
                 ", lastName='" + lastName + '\'' +
                 ", salary=" + salary +
                 ", experienceInYears=" + experienceInYears +
+                ", bornYear=" + bornYear +
                 '}';
     }
 }
