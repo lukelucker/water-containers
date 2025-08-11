@@ -10,9 +10,9 @@ public class Employee implements Serializable {
     private String firstName;
     private String lastName;
     private BigDecimal salary;
-    private int experienceInYears;
+    private Integer experienceInYears;
 
-    public Employee(String firstName, String lastName, BigDecimal salary, int experienceInYears) {
+    public Employee(String firstName, String lastName, BigDecimal salary, Integer experienceInYears) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
@@ -43,12 +43,20 @@ public class Employee implements Serializable {
         this.salary = salary;
     }
 
+    public Integer getExperienceInYears() {
+        return experienceInYears;
+    }
+
+    public void setExperienceInYears(Integer experienceInYears) {
+        this.experienceInYears = experienceInYears;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         Employee employee = (Employee) object;
-        return experienceInYears == employee.experienceInYears && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(salary, employee.salary);
+        return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(salary, employee.salary) && Objects.equals(experienceInYears, employee.experienceInYears);
     }
 
     @Override
