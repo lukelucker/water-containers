@@ -60,6 +60,7 @@ public class WaterContainer implements Serializable {
             this.currentWaterAmount -= value;
             log = OperationLog.create(OperationLog.OperationType.SUBTRACT, this, value, true);
         }
+        logs.add(log);
     }
 
     public void pourWater(WaterContainer source, double value) {
